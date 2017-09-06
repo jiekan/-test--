@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 引入less文件，声明关系 -->
+    <link rel="stylesheet" href="./css/myindex.css">
+    <!-- 注意:rel="stylesheet/less" -->
+
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./lib/bootstrap/fonts">
+    <link rel="stylesheet" href="./css/demo.css">
+    <!-- swiper做轮播的框架 -->
+    <link rel="stylesheet" href="lib/swiper/css/swiper.min.css">
+    <!-- 在引入文件的后面，声明一个编辑器 -->
+    <script src="./js/less.js"></script>
+
+</head>
+
+<body>
+    <header id="headerthree">
+
+        <a href="index.html"><i class="glyphicon glyphicon-chevron-left"></i></a>
+        <p class="title">专题列表</p>
+
+    </header>
+    <div id="containthree">
+        <div class="cont_All2">
+
+
+        </div>
+    </div>
+
+    <!-- 模板 -->
+    <script type="text/html" id="templateNum2">
+
+        {{each (52)}}
+        <div>
+            <a href="{{$value.url}}">
+                <div class="top">
+                    <img src="{{$value.img}}" alt="">
+                </div>
+                <div class="bottom">
+
+                    <p class="title">{{$value.title}}</p>
+                </div>
+            </a>
+        </div>
+        {{/each}}
+
+
+    </script>
+
+
+</body>
+
+</html>
+
+<script src="./lib/jQuery/jquery-1.11.1.min.js"></script>
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="./swiper/js/swiper.min.js"></script>
+<script src="./js/myindex.js"></script>
+
+<script src="./js/template-web.js"></script>
+<script>
+    $(function () {
+        $.ajax({
+            url: "http://127.0.0.1:9091/api/gettopics",
+            dataType: "Json",
+            success: function (data) {
+                console.log(data);
+                var result = template("templateNum2", data);
+                $(".cont_All2").html($(result));
+            }
+        })
+    })
+
+</script>

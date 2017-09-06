@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 引入less文件，声明关系 -->
+     <link rel="stylesheet" href="./css/myindex.css">
+    <!-- 注意:rel="stylesheet/less" -->
+
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./lib/bootstrap/fonts">
+    <link rel="stylesheet" href="./css/demo.css">
+    <!-- swiper做轮播的框架 -->
+    <link rel="stylesheet" href="lib/swiper/css/swiper.min.css">
+    <!-- 在引入文件的后面，声明一个编辑器 -->
+    <script src="./js/less.js"></script>
+
+</head>
+
+<body>
+    <header id="headertwo">
+
+        <a href="myindex.html"><i class="glyphicon glyphicon-chevron-left"></i></a>
+        <p class="title">连载动漫</p>
+
+    </header>
+    <div id="containtwo">
+        <div class="cont_All">
+
+        </div>
+    </div>
+
+    <!-- 模板 -->
+    <script type="text/html" id="templateNum1">
+
+        {{each (65)}}
+        <div>
+            <a href="{{$value.url}}">
+                <div class="lefts">
+                    <img src="{{$value.img}}" alt="">
+                </div>
+                <div class="rights">
+                    <h5>{{$value.name}}</h5>
+                    <p class="lianzainum">{{$value.episode}}</p>
+                    <p class="zjgenxindata">{{$value.updateTime}}</p>
+                    <p class="xiazainum">下载次数{{$value.downloadCount}}</p>
+                </div>
+            </a>
+        </div>
+        {{/each}}
+
+    </script>
+</body>
+
+</html>
+
+<script src="./lib/jQuery/jquery-1.11.1.min.js"></script>
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="./swiper/js/swiper.min.js"></script>
+<script src="./js/myindex.js"></script>
+
+<script src="./js/template-web.js"></script>
+<script>
+    $(function () {
+        $.ajax({
+            url: "http://127.0.0.1:9091/api/getlianzai",
+            dataType: "Json",
+            success: function (data) {
+                console.log(data);
+                var result = template("templateNum1", data);
+                $(".cont_All").html($(result));
+            }
+        })
+    })
+
+</script>

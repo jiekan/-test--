@@ -1,0 +1,56 @@
+
+body{
+	font-family: '微软雅黑';
+}
+*{
+    padding: 0;
+    margin: 0;
+}
+ul,ol{
+    list-style: none;
+    margin-bottom:0px;
+}
+a{
+    text-decoration: none;
+  
+}
+a:hover{
+     
+    color:yellow;
+}
+input,button{
+    border:none;
+    background-color: white;
+    outline: none;
+}
+
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.clearfix::before,.clearfix::after{
+	content: "";
+	display: block;
+	clear:both;
+}
+
+img{
+	/* 去除图片距离div底部3px的间距 */
+	vertical-align: bottom;
+}
+
+.bl{
+	border-left: 1px solid #ccc;
+}
+.br{
+	border-right: 1px solid #ccc;
+}
+.bt{
+	border-top: 1px solid #ccc;
+}
+.bb{
+	border-bottom: 1px solid #ccc;
+}
+
